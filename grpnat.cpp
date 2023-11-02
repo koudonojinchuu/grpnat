@@ -7,13 +7,16 @@ using namespace std;
 using namespace ranges;
 
 class Arrow_G { // an arrow is defined by each of its columns being the image of one of the base groups. Permutation matrix.
+
   public:
     vector<vector<unsigned>> m_coeffs;
     Arrow_G(vector<vector<unsigned>> coeffs): m_coeffs (coeffs) {};
+
     Arrow_G(unsigned n)
     {
       m_coeffs = vector<vector<unsigned>> (n, vector<unsigned> (n, 0));
     }
+
     // in a computer matrices are stored with lines the subunits, instead of columns as in maths notation or in TI92p etc.
     // This way the access would be still done (#line, #column).
     // The meaning of a column (math-vector) is unchanged.
@@ -32,6 +35,7 @@ class Arrow_G { // an arrow is defined by each of its columns being the image of
       }
       cout << "---" << endl;
     }
+
     vector<unsigned> apply(vector<unsigned> x)
     // x as a column vector
     {
@@ -59,6 +63,7 @@ class Arrow_G { // an arrow is defined by each of its columns being the image of
       // output res
       return res;
     }
+
     vector<unsigned> inverse(vector<unsigned> x) // Arrow_G is assumed iso, so we can apply its inverse.
     {
       // check dims
@@ -85,6 +90,7 @@ class Arrow_G { // an arrow is defined by each of its columns being the image of
 };
 
 class Trnat {
+
   public:
     vector<vector<unsigned>> m_connected_components;
     vector<unsigned> m_invalidated_indices;
